@@ -6,6 +6,11 @@ export const register = async (req, res) => {
   const { email, password, username } = req.body;
 
   try {
+
+    const userFound = await User.findOne({email});
+
+    if(userFound) return res.status(400).json(["El correo ya esta en uso"]);
+
     //Uso de la libreria bcryptjs para encriptar la contraseña
     const passwordHash = await bcrypt.hash(password, 10);
 
