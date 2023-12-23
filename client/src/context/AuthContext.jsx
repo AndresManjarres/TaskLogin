@@ -1,5 +1,5 @@
-import { createContext, useState, useContext} from "react";
-import { registerRequest } from '../api/auth';
+import { createContext, useState, useContext, useEffect} from "react";
+import { registerRequest, loginRequest } from '../api/auth';
 import PropTypes from 'prop-types';
 
 export const AuthContext = createContext();
@@ -29,10 +29,38 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const signin = async (user) => {
+     try {
+      const  res = await loginRequest(user);
+      console.log(res);  
+     } catch (error) {
+      if(Array.isArray(error.response.data))
+      {
+        return setErrors(error.response.data);
+      }
+      setErrors([error.response.data.message])
+     }
+    
+
+  }
+
+  //Funcion para borrar datos despues de 5 segundos
+  useEffect(() => {
+    if(errors.length > 0){
+      const timer = setTimeout(() => {
+        setErrors([]);
+      }, 5000);
+      return () => clearTimeout(timer); //limpia el timer para no gastar en renderizado
+    }
+  }, [errors]);
+
+
+
   return (
     <AuthContext.Provider 
     value={{ 
       signup, 
+      signin,
       user,
       isAuthenticated,
       errors,

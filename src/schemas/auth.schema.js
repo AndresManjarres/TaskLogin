@@ -35,6 +35,6 @@ export const loginSchema = z.object({
       required_error: "La contraseña es requerida",
     })
     .min(6, {
-      message_error: "La contraseña debe tener mínimo 6 caracteres",
+      message: "La contraseña debe tener mínimo 6 caracteres",
     }),
 });
