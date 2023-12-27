@@ -10,7 +10,10 @@ import cors from 'cors'
 const app = new Express();
 
 // Para que el servidor acepte peticiones de cualquier origen
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
 
 app.use(morgan("dev"));
 // Para convertir los datos que llegan en el body a json
