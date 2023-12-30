@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../context/AuthContext';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import { useEffect } from 'react';
 //import { useNavigate } from 'react-router-dom';
 //import { useEffect } from 'react';
 
@@ -8,7 +9,8 @@ function LoginPage() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   // cambios: agregar isAuthenticated para pasara desde el login a la pagina de tareas(TASKS)
-  const {signin, errors: signinErrors} = useAuth();
+  const {signin, errors: signinErrors, isAuthenticated} = useAuth();
+  const navigate = useNavigate();
 
   // const navigate = useNavigate();
 
@@ -24,6 +26,10 @@ function LoginPage() {
   const onSubmit = handleSubmit((data) => {
     signin(data)
   });
+
+  useEffect(() => {
+    if (isAuthenticated) navigate('/task');
+  },[isAuthenticated]);
 
   return (
     <div className='flex h-[calc(100vh-100px)] items-center justify-center'>

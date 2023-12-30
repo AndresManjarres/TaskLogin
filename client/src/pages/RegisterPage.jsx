@@ -15,7 +15,7 @@ function RegisterPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) navigate('/tasks');
+    if (isAuthenticated) navigate('/task');
   }, [isAuthenticated]);
 
   // para enviar los datos del formulario y mostrar por consola

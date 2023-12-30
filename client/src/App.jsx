@@ -8,25 +8,28 @@ import TaskFormPage from './pages/TaskFormPage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
 import ProtectedRoutes from './ProtectedRoutes';
+import { TasksProvider } from './context/TasksContext';
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
+      <TasksProvider>
+        <BrowserRouter>
+          <Routes>
 
-          <Route path='/' element={<HomePage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
+            <Route path='/' element={<HomePage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
 
-          <Route element={<ProtectedRoutes />}>
-            <Route path='/tasks' element={<TaskPage />} />
-            <Route path='/add-task' element={<TaskFormPage />} />
-            <Route path='/tasks/:id' element={<TaskFormPage />} />
-            <Route path='/profile' element={<ProfilePage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            <Route element={<ProtectedRoutes />}>
+              <Route path='/task' element={<TaskPage />} />
+              <Route path='/add-task' element={<TaskFormPage />} />
+              <Route path='/task/:id' element={<TaskFormPage />} />
+              <Route path='/profile' element={<ProfilePage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </TasksProvider>
     </AuthProvider>
   );
 }
