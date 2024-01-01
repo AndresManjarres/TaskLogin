@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import {createTaskR, getTasksR} from "../api/tasks";
+import { createTaskR, getTasksR, deleteTaskR } from "../api/tasks";
 
 const TasksContext = createContext();
 
@@ -25,7 +25,7 @@ export function TasksProvider({ children }) {
       console.error('Error al obtener las tareas:', error);
     }
   }
-  
+
   const createTask = async (task) => {
     try {
       const res = await createTaskR(task); // Utiliza 'task' en lugar de 'tasks'
@@ -37,11 +37,24 @@ export function TasksProvider({ children }) {
     }
   }
 
+  const deleteTask = async (id) => {
+    try {
+      const res = await deleteTaskR(id);
+      //Debe ser error 204
+      if (res.status === 200) setTasks(tasks.filter(task => task._id !== id));
+    } catch (error) {
+      console.log('Error al eliminar la tarea:', error);
+    }
+  };
+
+
+
   return (
     <TasksContext.Provider value={{
       tasks,
       createTask,
-      getTasks
+      getTasks,
+      deleteTask
     }}
     >
       {children}

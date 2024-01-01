@@ -16,20 +16,22 @@ function App() {
     <AuthProvider>
       <TasksProvider>
         <BrowserRouter>
-          <Navbar />
-          <Routes>
+          <main className='container mx-auto px-5'>
+            <Navbar />
+            <Routes>
 
-            <Route path='/' element={<HomePage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/register' element={<RegisterPage />} />
+              <Route path='/' element={<HomePage />} />
+              <Route path='/login' element={<LoginPage />} />
+              <Route path='/register' element={<RegisterPage />} />
 
-            <Route element={<ProtectedRoutes />}>
-              <Route path='/task' element={<TaskPage />} />
-              <Route path='/add-task' element={<TaskFormPage />} />
-              <Route path='/task/:id' element={<TaskFormPage />} />
-              <Route path='/profile' element={<ProfilePage />} />
-            </Route>
-          </Routes>
+              <Route element={<ProtectedRoutes />}>
+                <Route path='/task' element={<TaskPage />} />
+                <Route path='/add-task' element={<TaskFormPage />} />
+                <Route path='/task/:id' element={<TaskFormPage />} />
+                <Route path='/profile' element={<ProfilePage />} />
+              </Route>
+            </Routes>
+          </main>
         </BrowserRouter>
       </TasksProvider>
     </AuthProvider>
