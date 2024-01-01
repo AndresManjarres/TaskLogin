@@ -46,6 +46,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+  const logout = () => {
+    Cookie.remove("token");
+    setIsAuthenticated(false);
+    setUser(null);
+  }
+
   //Funcion para borrar datos despues de 5 segundos
   useEffect(() => {
     if (errors.length > 0) {
@@ -55,6 +62,7 @@ export const AuthProvider = ({ children }) => {
       return () => clearTimeout(timer); //limpia el timer para no gastar en renderizado
     }
   }, [errors]);
+
 
   useEffect(() => {
     async function checkLogin() {
@@ -94,6 +102,7 @@ return (
     value={{
       signup,
       signin,
+      logout,
       loading,
       user,
       isAuthenticated,
