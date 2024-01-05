@@ -8,14 +8,15 @@ function TaskFormPage() {
   const { register, handleSubmit, setValue } = useForm();
   const { createTask, getTask, updateTask } = useTasks();
   const navigate = useNavigate();
+
   const params = useParams();
 
   useEffect(() => {
     async function loadTask(){
       if (params.id) {
         const task =  await getTask(params.id);
-        setValue('Titulo', task.titulo);
-        setValue('descripcon', task.descripcion);
+        setValue('titulo', task.titulo);
+        setValue('descripcion', task.descripcion);
       }
     }
     loadTask();
@@ -37,7 +38,7 @@ function TaskFormPage() {
           className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
         />
 
-        <textarea rows="3" placeholder="Descripcón" {...register("descripcion")}
+        <textarea rows="3" placeholder="Descripcion" {...register("descripcion")}
           className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my2" />
 
         <button>Guardar</button>
