@@ -60,7 +60,7 @@ function RegisterPage() {
           errors.password && <p className='text-red-500'>La contraseña es requerida</p>
         }
 
-        <button type="submit" className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded self-center'>Registrarse</button>
+        <button type="submit" className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded self-center'>Registrarme</button>
       </form>
 
       <p className='flex gap-x-2 justify-between p-5'>
