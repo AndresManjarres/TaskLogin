@@ -12,9 +12,9 @@ function TaskFormPage() {
   const params = useParams();
 
   useEffect(() => {
-    async function loadTask(){
+    async function loadTask() {
       if (params.id) {
-        const task =  await getTask(params.id);
+        const task = await getTask(params.id);
         setValue('titulo', task.titulo);
         setValue('descripcion', task.descripcion);
       }
@@ -40,8 +40,9 @@ function TaskFormPage() {
 
         <textarea rows="3" placeholder="Descripcion" {...register("descripcion")}
           className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my2" />
-
-        <button>Guardar</button>
+        <div className="flex justify-center my-2">
+          <button className="bg-violet-500 hover:bg-violet-400 text-white font-bold py-2 px-4 border-b-4 border-violet-700 hover:border-violet-500 rounded"> Guardar</button>
+        </div>
       </form>
     </div>
   )

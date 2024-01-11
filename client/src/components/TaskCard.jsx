@@ -18,13 +18,13 @@ function TaskCard({ task }) {
       <p className="text-blue-400 text-xs mt-2">{new Date(task.fecha).toLocaleDateString()}</p>
 
       <div className="flex gap-x-2 items-center mt-5">
-        <Link to={`/task/${task._id}`} className="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-s-md text-xs">
+        <Link to={`/task/${task._id}`} className="bg-violet-700 hover:bg-violet-500 text-white font-bold py-2 px-4 rounded-s-md text-xs">
           Editar
         </Link>
 
         <button onClick={() => {
           deleteTask(task._id)
-        }} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-e-md text-xs">
+        }} className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-e-md text-xs">
           Eliminar
         </button>
       </div>
