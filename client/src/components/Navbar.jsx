@@ -7,7 +7,7 @@ function Navbar() {
   const { isAuthenticated, logout, user } = useAuth();
 
   return (
-    <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10 items-center">
+    <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10 items-center w-full max-w-screen-mx mx-auto min-w-[450px]">
       <Link to='/'>
         <h1 className="text-2xl font-bold">TaskLib</h1>
       </Link>
@@ -15,7 +15,7 @@ function Navbar() {
       <ul className="flex gap-x-2">
         {isAuthenticated ? (
           <>
-            <li>
+            <li className="hidden md:block">
               Bienvenido {user.username}
             </li>
             <li>
@@ -37,14 +37,14 @@ function Navbar() {
           <>
             <li>
               <Link to='/login'
-                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded flex items-center"
               >
                 Iniciar sesión
               </Link>
             </li>
             <li>
               <Link to='/register'
-                className="bg-slate-500 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded"
+                className="bg-slate-500 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded flex items-center"
               >Registrarme</Link>
             </li>
           </>
